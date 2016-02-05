@@ -1,0 +1,28 @@
+{
+  "name": "reflect-api",
+  "version": "1.0.0",
+  "description": "reflect is a smart mirror meant to streamline your morning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProjectReflect/reflect-api.git"
+  },
+  "author": "reflect",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ProjectReflect/reflect-api/issues"
+  },
+  "homepage": "https://github.com/ProjectReflect/reflect-api#readme",
+  "dependencies": {
+    "koa": "^1.1.2",
+    "koa-bodyparser": "^2.0.1",
+    "koa-mount": "^1.3.0",
+    "koa-route": "^2.4.2",
+    "nodemon": "^1.8.1"
+  }
+}
