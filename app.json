@@ -1,0 +1,13 @@
+{
+  "name":"reflect-api",
+  "scrips": {},
+  "env":{
+    "BUILDPACK_URL": {
+      "value": "https://github.com/heroku/heroku-buildpack-nodejs"
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "value": "false"
+    },
+  },
+  "addons": []
+}
