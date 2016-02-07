@@ -1,6 +1,9 @@
 {
   "name": "reflect-api",
   "version": "1.0.0",
+  "engines": {
+    "node": "4.2.4"
+  },
   "description": "reflect is a smart mirror meant to streamline your morning",
   "main": "index.js",
   "scripts": {
