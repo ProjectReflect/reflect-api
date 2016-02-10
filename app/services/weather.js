@@ -1,27 +1,21 @@
 'use strict'
 
 const bluebird = require('bluebird');
-const Forecast = require('forecast');
+const request = require('request');
 
-exports.getWeather = bluebird.coroutine(function *(parameters) {
-  // set up the forecast
-  const forecast = new Forecast({
-    service: 'forecast.io',
-    // there is no real key yet, but there will be eventually
-    key: process.env.WEATHER_API_KEY,
-    units: parameters.units,
-    cache: true,
-    ttl: {
-      minutes: 27,
-      seconds: 45
-      }
-  });
+exports.getWeather = bluebird.coroutine(function *() {
+  // these will be changed to be gotten from a server
+  // rather than being hardcoded like this
+  const WEATHER_URL = 'http://api.openweathermap.org/data/2.5/weather';
+  const lat = 43.7;
+  const lon = -79.4;
+  const id = process.env.WEATHER_API_KEY;
 
-  // weather is a promise
-  const weather = bluebird.promisify(forecast.get);
+  console.log(`${WEATHER_URL}?lat=${lat}&lon=${lon}&appid=${id}`);
 
-  // return back to the service that wanted this, unless there is an error
-  return weather([parameters.lat, parameters.long]).catch((err) => {
+  const weather = bluebird.promisify(request);
+
+  return weather(`${WEATHER_URL}?lat=${lat}&lon=${lon}&appid=${id}`).catch((err) => {
     throw new Error(err);
-  })
+  });
 })
