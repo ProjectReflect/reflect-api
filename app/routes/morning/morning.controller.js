@@ -3,14 +3,13 @@
 const weather = require('../../services/weather');
 
 exports.getWeather = function *() {
-  const parameters = this.request.body;
-
-  // this will be replaced with the request from the frontend
-  const testParameters = {
-    'lat': 33,
-    'long': 100,
-    'units': celcius
+  const result = yield weather.getWeather();
+  const jsonResult = JSON.parse(result.body);
+  // if needed in the future, we can return more information
+  this.body = {
+    curTemp: Math.round( (jsonResult.main.temp - 273.15) * 10 ) / 10,
+    condition: jsonResult.weather[0].main,
+    loc: jsonResult.name,
+    degreeType: 'C'
   };
-
-  this.body = yield weather.getWeather(testParameters);
 }
