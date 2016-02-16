@@ -2,7 +2,7 @@
 
 const koa = require('koa');
 const mount = require('koa-mount');
-const bodyParser = require('koa-bodyParser');
+const bodyParser = require('koa-bodyparser');
 
 const PORT = process.env.PORT || 4000;
 
