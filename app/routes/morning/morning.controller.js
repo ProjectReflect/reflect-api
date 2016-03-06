@@ -1,6 +1,7 @@
 'use strict';
 
 const weather = require('../../services/weather');
+const news = require('../../services/news');
 
 exports.getWeather = function *() {
   const result = yield weather.getWeather();
@@ -12,4 +13,12 @@ exports.getWeather = function *() {
     loc: jsonResult.name,
     degreeType: 'C'
   };
+}
+
+exports.getNews = function *() {
+  // TODO: have different modules for different news
+  // depending on what is set in the database
+  const result = yield news.getRedditNews();
+
+  this.body = result.slice(0,3);
 }
